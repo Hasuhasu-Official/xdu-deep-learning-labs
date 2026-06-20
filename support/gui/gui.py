@@ -27,7 +27,7 @@ from PySide6.QtWidgets import (
 )
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 PYTHON = sys.executable
 
 
@@ -143,15 +143,15 @@ class Dashboard(QWidget):
         refresh = QPushButton("刷新真实数据状态")
         refresh.clicked.connect(self.refresh_status)
         download = QPushButton("下载公开真实数据")
-        download.clicked.connect(lambda: self.process_panel.run([PYTHON, "scripts/prepare_real_datasets.py", "--all-public"]))
+        download.clicked.connect(lambda: self.process_panel.run([PYTHON, "support/scripts/prepare_real_datasets.py", "--all-public"]))
         full = QPushButton("运行全部真实实验")
-        full.clicked.connect(lambda: self.process_panel.run([PYTHON, "scripts/run_full_real_experiments.py", "--profile", "full"]))
+        full.clicked.connect(lambda: self.process_panel.run([PYTHON, "support/scripts/run_full_real_experiments.py", "--profile", "full"]))
         acceptance = QPushButton("运行真实数据验收版")
         acceptance.clicked.connect(
-            lambda: self.process_panel.run([PYTHON, "scripts/run_full_real_experiments.py", "--profile", "acceptance"])
+            lambda: self.process_panel.run([PYTHON, "support/scripts/run_full_real_experiments.py", "--profile", "acceptance"])
         )
         smoke = QPushButton("运行快速 smoke test")
-        smoke.clicked.connect(lambda: self.process_panel.run([PYTHON, "scripts/run_smoke_tests.py"]))
+        smoke.clicked.connect(lambda: self.process_panel.run([PYTHON, "support/scripts/run_smoke_tests.py"]))
         for btn in [refresh, download, acceptance, full, smoke]:
             row.addWidget(btn)
         layout.addLayout(row)
@@ -175,7 +175,7 @@ class Dashboard(QWidget):
         env = os.environ.copy()
         env["PYTHONPATH"] = str(ROOT) + os.pathsep + env.get("PYTHONPATH", "")
         proc = subprocess.run(
-            [PYTHON, "scripts/prepare_real_datasets.py", "--status"],
+            [PYTHON, "support/scripts/prepare_real_datasets.py", "--status"],
             cwd=ROOT,
             env=env,
             text=True,
@@ -339,7 +339,7 @@ class MainWindow(QMainWindow):
                 ),
                 (
                     "运行实验2快速验收",
-                    [PYTHON, "scripts/run_smoke_tests.py"],
+                    [PYTHON, "support/scripts/run_smoke_tests.py"],
                 ),
             ],
             self.process_panel,

@@ -12,8 +12,8 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
 
 from experiment1_image_classification.classification import build_dataset, build_model, evaluate  # noqa: E402
 from experiment2_segmentation_super_resolution.segmentation_sr import (  # noqa: E402

@@ -5,25 +5,25 @@ Model checkpoints, metrics, demo images, and audit outputs are generated under `
 Run the full experiment workflow:
 
 ```powershell
-python scripts\run_full_real_experiments.py --profile full
+python support\scripts\run_full_real_experiments.py --profile full
 ```
 
 Run the shorter real-data acceptance workflow:
 
 ```powershell
-python scripts\run_full_real_experiments.py --profile acceptance
+python support\scripts\run_full_real_experiments.py --profile acceptance
 ```
 
 Recheck the generated checkpoints:
 
 ```powershell
-python scripts\audit_model_quality.py
+python support\scripts\audit_model_quality.py
 ```
 
 The GUI demo loads checkpoints from `outputs\full_real` when they exist:
 
 ```powershell
-python -m apps.demo_gui
+python -m support.gui.demo_gui
 ```
 
 Expected generated artifact families:

@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 if __package__ in {None, ""}:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 import matplotlib
 
@@ -62,7 +62,7 @@ from experiment3_recurrent_neural_networks.sequence import (
 )
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "outputs" / "full_real"
 TMP = ROOT / "outputs" / "demo_runtime"
 CLASSIFICATION_MODELS = ["mlp", "lenet", "alexnet", "googlenet", "resnet"]

@@ -9,7 +9,7 @@ import time
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 PYTHON = sys.executable
 
 
@@ -35,7 +35,7 @@ def data_status() -> dict:
     env = os.environ.copy()
     env["PYTHONPATH"] = str(ROOT) + os.pathsep + env.get("PYTHONPATH", "")
     proc = subprocess.run(
-        [PYTHON, "scripts/prepare_real_datasets.py", "--status"],
+        [PYTHON, "support/scripts/prepare_real_datasets.py", "--status"],
         cwd=ROOT,
         env=env,
         text=True,
@@ -266,7 +266,7 @@ def main() -> None:
         print("Real dataset check failed:")
         for reason in reasons:
             print(f"- {reason}")
-        print("\nRun scripts/prepare_real_datasets.py --all-public to fetch public datasets; provide HWDB1 manually.")
+        print("\nRun support/scripts/prepare_real_datasets.py --all-public to fetch public datasets; provide HWDB1 manually.")
         raise SystemExit(2)
 
     summary = []

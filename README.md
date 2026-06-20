@@ -8,11 +8,11 @@
 experiment1_image_classification/              # 实验 1：MNIST、Fashion-MNIST、HWDB1 图像分类
 experiment2_segmentation_super_resolution/     # 实验 2：MSRC-V2 分割与 BSDS500 超分
 experiment3_recurrent_neural_networks/         # 实验 3：Jena 气象预测与 Shakespeare 文本生成
-apps/                                          # 训练控制界面与最终演示界面
-common/                                        # 公共工具函数
-scripts/                                       # 数据准备、完整训练、质量复查脚本
-DATASETS.md                                    # 数据集准备说明
-ARTIFACTS.md                                   # 模型产物与输出说明
+support/
+  gui/                                         # 训练控制界面与最终演示界面
+  scripts/                                     # 数据准备、完整训练、质量复查脚本
+  shared/                                      # 公共工具函数
+docs/                                          # 数据集和模型产物说明
 requirements.txt                               # Python 依赖
 ```
 
@@ -27,13 +27,13 @@ python -m pip install -r requirements.txt
 启动最终演示系统：
 
 ```powershell
-python -m apps.demo_gui
+python -m support.gui.demo_gui
 ```
 
 启动训练控制界面：
 
 ```powershell
-python -m apps.gui
+python -m support.gui.gui
 ```
 
 如果从仓库根目录之外启动程序，请先把项目根目录加入 `PYTHONPATH`。
@@ -43,26 +43,26 @@ python -m apps.gui
 数据集不随代码仓库提交，可通过脚本准备：
 
 ```powershell
-python scripts\prepare_real_datasets.py --all-public
-python scripts\prepare_real_datasets.py --status
+python support\scripts\prepare_real_datasets.py --all-public
+python support\scripts\prepare_real_datasets.py --status
 ```
 
 完整训练三个实验：
 
 ```powershell
-python scripts\run_full_real_experiments.py --profile full
+python support\scripts\run_full_real_experiments.py --profile full
 ```
 
 使用较短的真实数据流程生成可演示产物：
 
 ```powershell
-python scripts\run_full_real_experiments.py --profile acceptance
+python support\scripts\run_full_real_experiments.py --profile acceptance
 ```
 
 复查已生成的模型产物：
 
 ```powershell
-python scripts\audit_model_quality.py
+python support\scripts\audit_model_quality.py
 ```
 
 ## 实验 1：图像分类

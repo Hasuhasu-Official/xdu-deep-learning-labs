@@ -3,8 +3,8 @@
 The repository does not vendor datasets. The training scripts expect local data under `datasets/`, and the preparation script can recreate the public datasets used by the experiments.
 
 ```powershell
-python scripts\prepare_real_datasets.py --all-public
-python scripts\prepare_real_datasets.py --status
+python support\scripts\prepare_real_datasets.py --all-public
+python support\scripts\prepare_real_datasets.py --status
 ```
 
 Expected local layout after preparation:
