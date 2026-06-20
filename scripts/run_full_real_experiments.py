@@ -33,7 +33,7 @@ PROFILES = {
 
 def data_status() -> dict:
     env = os.environ.copy()
-    env["PYTHONPATH"] = str(ROOT / "src") + os.pathsep + env.get("PYTHONPATH", "")
+    env["PYTHONPATH"] = str(ROOT) + os.pathsep + env.get("PYTHONPATH", "")
     proc = subprocess.run(
         [PYTHON, "scripts/prepare_real_datasets.py", "--status"],
         cwd=ROOT,
@@ -74,7 +74,7 @@ def missing_reasons(status: dict) -> list[str]:
 
 def run_step(name: str, command: list[str], continue_on_error: bool) -> dict:
     env = os.environ.copy()
-    env["PYTHONPATH"] = str(ROOT / "src") + os.pathsep + env.get("PYTHONPATH", "")
+    env["PYTHONPATH"] = str(ROOT) + os.pathsep + env.get("PYTHONPATH", "")
     start = time.time()
     print(f"\n== {name} ==")
     print(" ".join(command))
@@ -97,7 +97,7 @@ def commands(profile: dict, device: str) -> list[tuple[str, list[str]]]:
             [
                 PYTHON,
                 "-m",
-                "dl_labs.exp1_classification.classification",
+                "experiment1_image_classification.classification",
                 "--datasets",
                 "mnist",
                 "fashion_mnist",
@@ -133,7 +133,7 @@ def commands(profile: dict, device: str) -> list[tuple[str, list[str]]]:
             [
                 PYTHON,
                 "-m",
-                "dl_labs.exp2_vision.segmentation_sr",
+                "experiment2_segmentation_super_resolution.segmentation_sr",
                 "segmentation",
                 "--dataset",
                 "msrc",
@@ -163,7 +163,7 @@ def commands(profile: dict, device: str) -> list[tuple[str, list[str]]]:
             [
                 PYTHON,
                 "-m",
-                "dl_labs.exp2_vision.segmentation_sr",
+                "experiment2_segmentation_super_resolution.segmentation_sr",
                 "super-resolution",
                 "--dataset",
                 "bsds500",
@@ -193,7 +193,7 @@ def commands(profile: dict, device: str) -> list[tuple[str, list[str]]]:
             [
                 PYTHON,
                 "-m",
-                "dl_labs.exp3_sequence.sequence",
+                "experiment3_recurrent_neural_networks.sequence",
                 "weather",
                 "--dataset",
                 "jena",
@@ -222,7 +222,7 @@ def commands(profile: dict, device: str) -> list[tuple[str, list[str]]]:
             [
                 PYTHON,
                 "-m",
-                "dl_labs.exp3_sequence.sequence",
+                "experiment3_recurrent_neural_networks.sequence",
                 "shakespeare",
                 "--dataset",
                 "shakespeare",

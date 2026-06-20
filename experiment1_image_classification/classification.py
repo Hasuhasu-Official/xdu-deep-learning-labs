@@ -12,7 +12,7 @@ from torch import nn
 from torch.utils.data import DataLoader, Dataset
 from torchvision import datasets, transforms
 
-from ..common.utils import (
+from common.utils import (
     AverageMeter,
     accuracy_from_logits,
     count_parameters,

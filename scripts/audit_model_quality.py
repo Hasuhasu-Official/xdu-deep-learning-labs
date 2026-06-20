@@ -15,8 +15,8 @@ from torch.utils.data import DataLoader
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from dl_labs.exp1_classification.classification import build_dataset, build_model, evaluate  # noqa: E402
-from dl_labs.exp2_vision.segmentation_sr import (  # noqa: E402
+from experiment1_image_classification.classification import build_dataset, build_model, evaluate  # noqa: E402
+from experiment2_segmentation_super_resolution.segmentation_sr import (  # noqa: E402
     BSDS500SRDataset,
     MSRCSegmentationDataset,
     SRCNN,
@@ -25,7 +25,7 @@ from dl_labs.exp2_vision.segmentation_sr import (  # noqa: E402
     batch_ssim,
     psnr,
 )
-from dl_labs.exp3_sequence.sequence import (  # noqa: E402
+from experiment3_recurrent_neural_networks.sequence import (  # noqa: E402
     CharRNN,
     SequenceRegressor,
     WindowedArrayDataset,

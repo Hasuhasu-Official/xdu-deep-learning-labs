@@ -12,7 +12,7 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader, Dataset
 
-from ..common.utils import AverageMeter, ensure_dir, get_device, save_csv, save_json, set_seed
+from common.utils import AverageMeter, ensure_dir, get_device, save_csv, save_json, set_seed
 
 
 class WindowedArrayDataset(Dataset):

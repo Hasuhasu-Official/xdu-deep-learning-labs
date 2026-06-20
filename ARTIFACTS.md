@@ -23,7 +23,7 @@ python scripts\audit_model_quality.py
 The GUI demo loads checkpoints from `outputs\full_real` when they exist:
 
 ```powershell
-python -m dl_labs.demo_gui
+python -m apps.demo_gui
 ```
 
 Expected generated artifact families:

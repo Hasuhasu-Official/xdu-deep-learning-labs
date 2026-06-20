@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 if __package__ in {None, ""}:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import matplotlib
 
@@ -40,8 +40,8 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from dl_labs.exp1_classification.classification import build_dataset, build_model, label_names
-from dl_labs.exp2_vision.segmentation_sr import (
+from experiment1_image_classification.classification import build_dataset, build_model, label_names
+from experiment2_segmentation_super_resolution.segmentation_sr import (
     BSDS500SRDataset,
     MSRCSegmentationDataset,
     SRCNN,
@@ -53,10 +53,16 @@ from dl_labs.exp2_vision.segmentation_sr import (
     psnr,
     tensor_to_image,
 )
-from dl_labs.exp3_sequence.sequence import CharRNN, SequenceRegressor, WindowedArrayDataset, generate_text, preprocess_jena
+from experiment3_recurrent_neural_networks.sequence import (
+    CharRNN,
+    SequenceRegressor,
+    WindowedArrayDataset,
+    generate_text,
+    preprocess_jena,
+)
 
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "outputs" / "full_real"
 TMP = ROOT / "outputs" / "demo_runtime"
 CLASSIFICATION_MODELS = ["mlp", "lenet", "alexnet", "googlenet", "resnet"]

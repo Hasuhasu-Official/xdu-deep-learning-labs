@@ -27,7 +27,7 @@ from PySide6.QtWidgets import (
 )
 
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[1]
 PYTHON = sys.executable
 
 
@@ -54,7 +54,7 @@ class ProcessPanel(QWidget):
             QMessageBox.warning(self, "任务正在运行", "请先停止或等待当前任务结束。")
             return
         env = os.environ.copy()
-        env["PYTHONPATH"] = str(ROOT / "src") + os.pathsep + env.get("PYTHONPATH", "")
+        env["PYTHONPATH"] = str(ROOT) + os.pathsep + env.get("PYTHONPATH", "")
         self.output.clear()
         self.command_line.setText(" ".join(args))
         self.process = QProcess(self)
@@ -173,7 +173,7 @@ class Dashboard(QWidget):
         import subprocess
 
         env = os.environ.copy()
-        env["PYTHONPATH"] = str(ROOT / "src") + os.pathsep + env.get("PYTHONPATH", "")
+        env["PYTHONPATH"] = str(ROOT) + os.pathsep + env.get("PYTHONPATH", "")
         proc = subprocess.run(
             [PYTHON, "scripts/prepare_real_datasets.py", "--status"],
             cwd=ROOT,
@@ -222,7 +222,7 @@ class MainWindow(QMainWindow):
                     [
                         PYTHON,
                         "-m",
-                        "dl_labs.exp1_classification.classification",
+                        "experiment1_image_classification.classification",
                         "--datasets",
                         "mnist",
                         "fashion_mnist",
@@ -256,7 +256,7 @@ class MainWindow(QMainWindow):
                     [
                         PYTHON,
                         "-m",
-                        "dl_labs.exp1_classification.classification",
+                        "experiment1_image_classification.classification",
                         "--datasets",
                         "synthetic",
                         "--models",
@@ -290,7 +290,7 @@ class MainWindow(QMainWindow):
                     [
                         PYTHON,
                         "-m",
-                        "dl_labs.exp2_vision.segmentation_sr",
+                        "experiment2_segmentation_super_resolution.segmentation_sr",
                         "segmentation",
                         "--dataset",
                         "msrc",
@@ -316,7 +316,7 @@ class MainWindow(QMainWindow):
                     [
                         PYTHON,
                         "-m",
-                        "dl_labs.exp2_vision.segmentation_sr",
+                        "experiment2_segmentation_super_resolution.segmentation_sr",
                         "super-resolution",
                         "--dataset",
                         "bsds500",
@@ -356,7 +356,7 @@ class MainWindow(QMainWindow):
                     [
                         PYTHON,
                         "-m",
-                        "dl_labs.exp3_sequence.sequence",
+                        "experiment3_recurrent_neural_networks.sequence",
                         "weather",
                         "--dataset",
                         "jena",
@@ -383,7 +383,7 @@ class MainWindow(QMainWindow):
                     [
                         PYTHON,
                         "-m",
-                        "dl_labs.exp3_sequence.sequence",
+                        "experiment3_recurrent_neural_networks.sequence",
                         "shakespeare",
                         "--dataset",
                         "shakespeare",
@@ -410,7 +410,7 @@ class MainWindow(QMainWindow):
                     [
                         PYTHON,
                         "-m",
-                        "dl_labs.exp3_sequence.sequence",
+                        "experiment3_recurrent_neural_networks.sequence",
                         "weather",
                         "--dataset",
                         "synthetic",
